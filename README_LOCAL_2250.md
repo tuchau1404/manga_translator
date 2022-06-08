@@ -1,0 +1,2 @@
+# manga_translator
+hellod
