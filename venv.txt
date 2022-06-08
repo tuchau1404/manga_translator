@@ -1,0 +1,16 @@
+#got this problem after upgrading to Ubuntu 20.04. I had a virtual environment depending on Python 3.7, and, to avoid re-installing the whole virtual environment for Python 3.8, I fixed distutils on Python 3.7:
+
+#I added the deadsnake PPA:
+
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+#And then installed the distutils package for Python 3.7:
+
+sudo apt install python3.7-distutils
+sudo python3.7 -m pip install virtualenv
+#virtual env
+virtualenv --python=python3.7 .venv
+source .venv/bin/activate
+#error pip install python-Levenshtein
+sudo apt-get install python3.7-dev
+#requirement protobuf==3.20.1
