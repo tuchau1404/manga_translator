@@ -1,2 +1,2 @@
 # manga_translator
-hello
+hellod
