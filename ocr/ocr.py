@@ -1,11 +1,16 @@
-from paddleocr import PaddleOCR,draw_ocr
+from paddleocr import PaddleOCR
 import json
+from PIL import Image
+def resize(img_path):
+    size = (600,840)
+    im = Image.open(img_path)
+    im.thumbnail(size, Image.ANTIALIAS)
+    im.save("output/img_resize.jpg",)
 
 def predict_path(img_path):  
     det_dir = "ocr/models/en_PP-OCRv3_det_infer/"  
     rec_dir = "ocr/models/en_PP-OCRv3_rec_infer/"
     ocr = PaddleOCR(use_angle_cls=False,lang='en',det_model_dir=det_dir,rec_model_dir=rec_dir)
-
     result = ocr.ocr(img_path, cls=True)
     # print(result[0][1][0])
     dict = {}
@@ -22,5 +27,5 @@ def predict_path(img_path):
 
     with open("output/result.json", "w") as f:
         json.dump(dict, f)
-
-predict_path("assets/ppocr_img/imgs_en/img623.jpg")
+resize("assets/001-fix-2.jpg")
+# predict_path("assets/ppocr_img/imgs_en/img623.jpg")
